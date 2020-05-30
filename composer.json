@@ -1,0 +1,11 @@
+{
+    "name": "rgeraads/hello-world",
+    "description": "Hello world",
+    "license": "MIT",
+    "require": {
+        "php": "^7.4"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
