@@ -1,7 +1,7 @@
 # see https://medium.com/@othillo/adding-composer-to-php-docker-images-using-multi-stage-builds-2a10967ae6c1
 
 # use the official PHP image as base image
-FROM php:7.4.6
+FROM php:7.4.6-fpm
 
 RUN apt-get update && apt-get install --yes zip
 

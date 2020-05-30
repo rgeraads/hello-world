@@ -12,3 +12,10 @@ services:
       COMPOSER_AUTH:
       COMPOSER_CACHE_DIR: /tmp/composer_cache
       COMPOSER_MEMORY_LIMIT: -1
+
+  nginx:
+    build: docker/nginx
+    ports:
+      - 8000:80
+    depends_on:
+      - php
