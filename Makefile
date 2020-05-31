@@ -8,7 +8,7 @@
 setup: build dependencies up ## Setup the project
 destroy: down-with-volumes ## Destroy the project
 test: phpunit ## Run the test suite
-qa: phpstan ## Run the quality assurance suite
+qa: phpstan cs-fixer ## Run the quality assurance suite
 
 build:
 	$(.DOCKER_COMPOSE) build --pull
@@ -30,6 +30,9 @@ phpunit:
 
 phpstan:
 	$(.DOCKER_RUN_PHP) vendor/bin/phpstan analyse --level=max --no-progress bin/ src/
+
+cs-fixer:
+	$(.DOCKER_RUN_PHP) vendor/bin/php-cs-fixer fix --diff --ansi
 
 # Based on https://www.thapaliya.com/en/writings/well-documented-makefiles/
 help: ## Display this help

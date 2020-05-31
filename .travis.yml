@@ -7,4 +7,5 @@ install:
 
 script:
   - vendor/bin/phpstan analyse --level=max --no-progress bin/ src/
+  - vendor/bin/php-cs-fixer fix --dry-run --ansi --stop-on-violation
   - bin/phpunit
