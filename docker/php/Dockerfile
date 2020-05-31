@@ -3,7 +3,7 @@
 # use the official PHP image as base image
 FROM php:7.4.6-fpm
 
-RUN apt-get update && apt-get install --yes zip
+RUN apt-get update && apt-get install --yes git zip
 
 # copy the Composer PHAR from the Composer image into the PHP image
 COPY --from=composer:1.10.6 /usr/bin/composer /usr/bin/composer
