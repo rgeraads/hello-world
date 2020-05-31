@@ -6,4 +6,5 @@ install:
   - composer install
 
 script:
+  - vendor/bin/phpstan analyse --level=max --no-progress bin/ src/
   - bin/phpunit
