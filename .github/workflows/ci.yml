@@ -34,8 +34,11 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress  --ansi
 
-      - name: Run quality assurance
-        run: make phpstan cs-fixer
+      - name: Run phpstan
+        run: vendor/bin/phpstan analyse --level=max --no-progress bin/ src/ --ansi
+
+      - name: Run cs-fixer
+        run: vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation  --ansi
 
       - name: Run tests
-        run: make test
+        run: bin/phpunit
