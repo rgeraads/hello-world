@@ -32,7 +32,7 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
 
       - name: Install dependencies
-        run: make dependencies
+        run: composer install --no-progress  --ansi
 
       - name: Run quality assurance
         run: make phpstan cs-fixer
