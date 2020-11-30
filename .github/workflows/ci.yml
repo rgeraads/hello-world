@@ -1,0 +1,41 @@
+---
+name: CI
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: [ ubuntu-latest ]
+
+    name: Run CI suite
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get Composer Cache Directory
+          id: composer-cache
+          run: |
+            echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache Composer Downloads
+          uses: actions/cache@v2
+          with:
+            path: vendor/
+            key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+            restore-keys: |
+              ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Cache PHP dependencies
+          uses: actions/cache@v2
+          with:
+            path: vendor
+            key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install dependencies
+        run: make dependencies
+
+      - name: Run quality assurance
+        run: make phpstan cs-fixer
+
+      - name: Run tests
+        run: make test
