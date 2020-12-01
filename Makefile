@@ -23,7 +23,7 @@ down-with-volumes:
 	$(.DOCKER_COMPOSE) down --volumes --remove-orphans
 
 dependencies:
-	$(.DOCKER_RUN_PHP) composer install --no-interaction --no-suggest --no-scripts --ansi
+	$(.DOCKER_RUN_PHP) composer install --no-interaction --no-scripts --ansi
 
 phpunit:
 	$(.DOCKER_RUN_PHP) bin/phpunit

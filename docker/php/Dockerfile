@@ -1,12 +1,12 @@
 # see https://medium.com/@othillo/adding-composer-to-php-docker-images-using-multi-stage-builds-2a10967ae6c1
 
 # use the official PHP image as base image
-FROM php:7.4.6-fpm
+FROM php:7.4-fpm
 
 RUN apt-get update && apt-get install --yes git zip
 
 # copy the Composer PHAR from the Composer image into the PHP image
-COPY --from=composer:1.10.6 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # show that both Composer and PHP run as expected
 RUN composer --version && php -v
