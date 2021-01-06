@@ -38,7 +38,7 @@ jobs:
         run: vendor/bin/phpstan analyse --level=max --no-progress bin/ src/ --ansi
 
       - name: Run cs-fixer
-        run: vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation  --ansi
+        run: PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation  --ansi
 
       - name: Run tests
         run: bin/phpunit
