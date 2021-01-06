@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Test\Functional\Controller;
+namespace App\Tests\Functional\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -19,7 +19,7 @@ final class HealthControllerTest extends WebTestCase
 
         $response = $client->getResponse();
 
-        $this->assertSame(200, $response->getStatusCode());
-        $this->assertSame('👍', $response->getContent());
+        self::assertSame(200, $response->getStatusCode());
+        self::assertSame('👍', $response->getContent());
     }
 }

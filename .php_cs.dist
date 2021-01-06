@@ -9,6 +9,8 @@ return PhpCsFixer\Config::create()
     ->setRules([
         '@Symfony' => true,
         'array_syntax' => ['syntax' => 'short'],
+        'yoda_style' => false,
+        'php_unit_method_casing' => ['case' => 'snake_case'],
     ])
     ->setFinder($finder)
 ;

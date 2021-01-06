@@ -8,7 +8,7 @@
 setup: build dependencies up ## Setup the project
 destroy: down-with-volumes ## Destroy the project
 test: phpunit ## Run the test suite
-qa: phpstan cs-fixer ## Run the quality assurance suite
+qa: security-check phpstan cs-fixer lint ## Run the quality assurance suite
 
 build:
 	$(.DOCKER_COMPOSE) build --pull
@@ -28,11 +28,25 @@ dependencies:
 phpunit:
 	$(.DOCKER_RUN_PHP) bin/phpunit
 
+validate-composer:
+	$(.DOCKER_RUN_PHP) composer validate --strict
+
+security-check:
+	$(.DOCKER_RUN_PHP) bin/console security:check
+
+lint: lint-container lint-yaml
+
+lint-container:
+	$(.DOCKER_RUN_PHP) bin/console lint:container
+
+lint-yaml:
+	$(.DOCKER_RUN_PHP) bin/console lint:yaml config --parse-tags
+
 phpstan:
 	$(.DOCKER_RUN_PHP) vendor/bin/phpstan analyse --level=max --no-progress bin/ src/
 
 cs-fixer:
-	$(.DOCKER_RUN_PHP) vendor/bin/php-cs-fixer fix --diff --ansi
+	docker-compose run -e PHP_CS_FIXER_IGNORE_ENV=1 --rm php vendor/bin/php-cs-fixer fix --diff --dry-run --ansi
 
 # Based on https://www.thapaliya.com/en/writings/well-documented-makefiles/
 help: ## Display this help
