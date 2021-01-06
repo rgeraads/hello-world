@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller;
+namespace App\Tests\Unit\Controller;
 
 use App\Controller\HealthController;
 use PHPUnit\Framework\TestCase;
@@ -19,6 +19,6 @@ final class HealthControllerTest extends TestCase
 
         $expected = new Response('👍', 200);
 
-        $this->assertEquals($expected, $controller->__invoke());
+        self::assertEquals($expected, $controller->__invoke());
     }
 }
