@@ -14,6 +14,7 @@ RUN composer --version && php -v
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 COPY php.ini /usr/local/etc/php/php.ini
+COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
 WORKDIR /app
 
