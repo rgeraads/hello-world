@@ -13,7 +13,7 @@ final class HealthControllerTest extends WebTestCase
      */
     public function it_should_be_healthy(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request('GET', '/health');
 
