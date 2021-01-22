@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: The PHP Security Checker
+        uses: symfonycorp/security-checker-action@v2
+
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
