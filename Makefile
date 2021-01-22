@@ -32,7 +32,7 @@ validate-composer:
 	$(.DOCKER_RUN_PHP) composer validate --strict
 
 security-check:
-	$(.DOCKER_RUN_PHP) bin/console security:check
+	docker-compose pull security-checker && docker-compose run --rm security-checker check:security
 
 lint: lint-container lint-yaml
 
