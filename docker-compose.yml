@@ -30,9 +30,3 @@ services:
     environment:
       BLACKFIRE_SERVER_ID:
       BLACKFIRE_SERVER_TOKEN:
-
-  security-checker:
-    image: symfonycorp/cli
-    working_dir: /app
-    volumes:
-      - ./:/app:delegated
