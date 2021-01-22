@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class HealthController
 {
-    #[Route('/health', methods:['GET'])]
+    #[Route('/health', methods: ['GET'])]
     public function __invoke(): Response
     {
         return new Response('👍', 200);
