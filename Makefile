@@ -32,8 +32,7 @@ validate-composer:
 	$(.DOCKER_RUN_PHP) composer validate --strict
 
 security-check:
-	docker pull symfonycorp/cli
-	docker run --rm -it -v $(PWD):$(PWD) -w $(PWD) symfonycorp/cli check:security
+	docker run --pull --rm -it -v $(PWD):$(PWD) -w $(PWD) symfonycorp/cli check:security
 
 lint: lint-container lint-yaml
 
