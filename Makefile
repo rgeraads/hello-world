@@ -9,7 +9,7 @@ setup: build dependencies up ## Setup the project
 restart: down up ## Restart the project
 destroy: down-with-volumes ## Destroy the project
 test: phpunit ## Run the test suite
-qa: security-check phpstan cs-fixer lint ## Run the quality assurance suite
+qa: phpstan cs-fixer lint ## Run the quality assurance suite
 
 build:
 	$(.DOCKER_COMPOSE) build --pull
@@ -34,9 +34,6 @@ shell:
 
 validate-composer:
 	$(.DOCKER_RUN_PHP) composer validate --strict
-
-security-check:
-	docker run --pull --rm -it -v $(PWD):$(PWD) -w $(PWD) symfonycorp/cli check:security
 
 lint: lint-container lint-yaml
 
