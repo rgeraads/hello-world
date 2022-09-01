@@ -1,11 +1,12 @@
 .DEFAULT_GOAL := help
 
-.DOCKER_COMPOSE := docker-compose
+.DOCKER_COMPOSE := docker compose
 .DOCKER_RUN_PHP := $(.DOCKER_COMPOSE) run --rm php
 
 .PHONY: all $(MAKECMDGOALS) #see https://stackoverflow.com/questions/44492805/makefile-declare-all-targets-phony
 
 setup: build dependencies up ## Setup the project
+restart: down up ## Restart the project
 destroy: down-with-volumes ## Destroy the project
 test: phpunit ## Run the test suite
 qa: security-check phpstan cs-fixer lint ## Run the quality assurance suite
@@ -27,6 +28,9 @@ dependencies:
 
 phpunit:
 	$(.DOCKER_RUN_PHP) bin/phpunit
+
+shell:
+	$(.DOCKER_RUN_PHP) sh
 
 validate-composer:
 	$(.DOCKER_RUN_PHP) composer validate --strict
