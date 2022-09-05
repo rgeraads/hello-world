@@ -17,8 +17,10 @@ services:
 
   nginx:
     build: docker/nginx
+    volumes:
+      - ./:/app:delegated #required if files other than index.php need to be available
     ports:
-      - 8000:80
+      - "8000:80"
     depends_on:
       - php
 
