@@ -6,8 +6,8 @@ services:
     user: ${HOST_UID-1000}:${HOST_GID-1000}
     working_dir: /app
     volumes:
-      - ./:/app:delegated
-      - ~/.composer/cache:/tmp/composer_cache:delegated
+      - ./:/app
+      - ~/.composer/cache:/tmp/composer_cache
     environment:
       BLACKFIRE_CLIENT_ID:
       BLACKFIRE_CLIENT_TOKEN:
@@ -18,7 +18,7 @@ services:
   nginx:
     build: docker/nginx
     volumes:
-      - ./:/app:delegated #required if files other than index.php need to be available
+      - ./:/app #required if files other than index.php need to be available
     ports:
       - "8000:80"
     depends_on:
