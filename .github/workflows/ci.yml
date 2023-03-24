@@ -6,6 +6,10 @@ on: [ push ]
 jobs:
   build:
     runs-on: [ ubuntu-latest ]
+    strategy:
+      matrix:
+        php-version:
+          - "8.2"
 
     name: Run CI suite
 
