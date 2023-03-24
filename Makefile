@@ -47,7 +47,7 @@ phpstan:
 	$(.DOCKER_RUN_PHP) vendor/bin/phpstan analyse --level=max --no-progress bin/ src/
 
 cs-fixer:
-	docker-compose run --rm php vendor/bin/php-cs-fixer fix --diff --dry-run --ansi
+	$(.DOCKER_RUN_PHP) vendor/bin/php-cs-fixer fix --diff --dry-run --ansi
 
 # Based on https://www.thapaliya.com/en/writings/well-documented-makefiles/
 help: ## Display this help
