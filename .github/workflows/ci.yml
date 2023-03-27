@@ -8,7 +8,7 @@ jobs:
     runs-on: [ ubuntu-latest ]
     strategy:
       matrix:
-        php:
+        php-versions:
           - "8.2"
 
     name: Run CI suite
