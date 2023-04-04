@@ -13,3 +13,7 @@ if (file_exists(dirname(__DIR__).'/config/bootstrap.php')) {
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
 }
+
+passthru(sprintf('php bin/console doctrine:database:drop --if-exists --quiet --env=%s', 'test'));
+passthru(sprintf('php bin/console doctrine:database:create --if-not-exists --quiet --env=%s', 'test'));
+passthru(sprintf('php bin/console doctrine:migrations:migrate --no-interaction --quiet --env=%s', 'test'));

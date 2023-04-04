@@ -1,20 +1,31 @@
 ---
 name: CI
 
-on: [ push ]
+on: [ push, pull_request ]
 
 jobs:
   build:
     runs-on: [ ubuntu-latest ]
     name: Run CI suite
 
+    services:
+      mysql:
+        image: mysql:8.0
+        ports:
+          - 3306/tcp
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        env:
+          MYSQL_ROOT_PASSWORD: 0000
+
     steps:
+      - name: Checkout
       - uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+          extensions: mysql
 
       - name: The PHP Security Checker
         uses: symfonycorp/security-checker-action@v3
@@ -42,7 +53,7 @@ jobs:
         run: composer install --no-progress  --ansi
 
       - name: Run phpstan
-        run: vendor/bin/phpstan analyse --level=max --no-progress bin/ src/ --ansi
+        run: vendor/bin/phpstan analyse --no-progress --ansi
 
       - name: Run cs-fixer
         run: vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation  --ansi

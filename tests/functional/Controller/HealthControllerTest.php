@@ -8,9 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class HealthControllerTest extends WebTestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function it_should_be_healthy(): void
     {
         $client = self::createClient();
