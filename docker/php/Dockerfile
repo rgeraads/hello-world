@@ -5,6 +5,8 @@ FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install --yes git zip
 
+RUN docker-php-ext-install pdo pdo_mysql
+
 # copy the Composer PHAR from the Composer image into the PHP image
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 

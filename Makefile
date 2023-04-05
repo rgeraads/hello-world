@@ -9,7 +9,7 @@ setup: build dependencies up ## Setup the project
 restart: down up ## Restart the project
 destroy: down-with-volumes ## Destroy the project
 test: phpunit ## Run the test suite
-qa: phpstan cs-fixer lint ## Run the quality assurance suite
+qa: phpstan cs lint ## Run the quality assurance suite
 
 build:
 	$(.DOCKER_COMPOSE) build --pull
@@ -44,10 +44,13 @@ lint-yaml:
 	$(.DOCKER_RUN_PHP) bin/console lint:yaml config --parse-tags
 
 phpstan:
-	$(.DOCKER_RUN_PHP) vendor/bin/phpstan analyse --level=max --no-progress bin/ src/
+	$(.DOCKER_RUN_PHP) vendor/bin/phpstan analyse --no-progress
 
-cs-fixer:
+cs:
 	$(.DOCKER_RUN_PHP) vendor/bin/php-cs-fixer fix --diff --dry-run --ansi
+
+cs-fix:
+	$(.DOCKER_RUN_PHP) vendor/bin/php-cs-fixer fix --diff --ansi
 
 # Based on https://www.thapaliya.com/en/writings/well-documented-makefiles/
 help: ## Display this help
