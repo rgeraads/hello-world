@@ -15,9 +15,9 @@ jobs:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
         env:
-          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: 0000
           MYSQL_DATABASE: test
 
     steps:
       - uses: actions/checkout@v1
-      - run: mysql -h 127.0.0.1 --port 3306 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test;'
+      - run: mysql -h 127.0.0.1 --port 3306 -u root -p0000 -e 'CREATE DATABASE IF NOT EXISTS test;'
