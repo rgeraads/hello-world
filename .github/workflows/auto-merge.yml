@@ -1,13 +1,17 @@
 name: Auto-merge Dependabot Pull Requests
 
-on: pull_request_target
+on: pull_request
+
+permissions:
+  pull-requests: write
+  contents: write
 
 jobs:
   merge:
     runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
     steps:
-      - name: Auto-merge Dependabot Pull Requests
-        if: github.actor == 'dependabot[bot]'
-        run: gh pr merge --squash --auto "1"
+      - uses: peter-evans/enable-pull-request-automerge@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ github.event.pull_request.number }}
+          merge-method: squash
