@@ -1,8 +1,6 @@
 name: Auto-merge Dependabot Pull Requests
 
-on:
-  pull_request:
-    types: [ opened, synchronize, reopened, ready_for_review ]
+on: pull_request_target
 
 jobs:
   merge:
