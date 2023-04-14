@@ -7,18 +7,15 @@ permissions:
   contents: write
 
 jobs:
-  approve:
-    runs-on: ubuntu-latest
-    permissions:
-      if: github.actor == 'dependabot[bot]'
-      steps:
-        - uses: hmarr/auto-approve-action@v3
-
-  merge:
+  auto-merge-dependabot-pr:
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - name: approve
+        uses: hmarr/auto-approve-action@v3
+
+      - name: merge
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           pull-request-number: ${{ github.event.pull_request.number }}
           merge-method: squash
