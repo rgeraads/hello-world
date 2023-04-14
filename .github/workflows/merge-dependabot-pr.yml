@@ -9,10 +9,9 @@ permissions:
 jobs:
   approve:
     runs-on: ubuntu-latest
-    permissions:
-      if: github.actor == 'dependabot[bot]'
-      steps:
-        - uses: hmarr/auto-approve-action@v3
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - uses: hmarr/auto-approve-action@v3
 
   merge:
     runs-on: ubuntu-latest
