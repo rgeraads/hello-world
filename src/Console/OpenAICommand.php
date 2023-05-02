@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace App\Console;
+
 use App\OpenAI\Language;
 use App\OpenAI\OpenAIClient;
 use App\OpenAI\Responder;

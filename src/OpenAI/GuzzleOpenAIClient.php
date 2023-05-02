@@ -38,9 +38,8 @@ final class GuzzleOpenAIClient implements OpenAIClient
     {
         $headers = [
             'Authorization' => 'Bearer ' . $this->openaiApiKey,
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ];
-
 
         $params = [
             'messages' => [],
@@ -60,7 +59,7 @@ final class GuzzleOpenAIClient implements OpenAIClient
 
         $response = $this->client->post(self::URL, [
             'headers' => $headers,
-            'json' => $params
+            'json' => $params,
         ]);
 
         $contents = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
