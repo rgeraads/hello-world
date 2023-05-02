@@ -49,7 +49,7 @@ final class GuzzleOpenAIClient implements OpenAIClient
         ];
 
         if ($this->responder) {
-            $params['messages'][] = ['role' => 'system', 'content' => sprintf('Pretend you are the following person: %s', $this->reponder->value)];
+            $params['messages'][] = ['role' => 'system', 'content' => sprintf('Pretend you are the following person: %s', $this->responder->value)];
         }
 
         if ($this->language) {
