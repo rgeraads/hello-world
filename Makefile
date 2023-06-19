@@ -1,56 +1,47 @@
 .DEFAULT_GOAL := help
 
-.DOCKER_COMPOSE := docker compose
-.DOCKER_RUN_PHP := $(.DOCKER_COMPOSE) run --rm php
+.RUN_PHP := php
 
 .PHONY: all $(MAKECMDGOALS) #see https://stackoverflow.com/questions/44492805/makefile-declare-all-targets-phony
 
-setup: build dependencies up ## Setup the project
-restart: down up ## Restart the project
-destroy: down-with-volumes ## Destroy the project
+ifneq ("$(wildcard .docker)","")
+    include Makefile_Docker
+endif
+
 test: phpunit ## Run the test suite
 qa: phpstan cs lint ## Run the quality assurance suite
 
-build:
-	$(.DOCKER_COMPOSE) build --pull
+enable-docker:
+	@touch .docker
 
-up:
-	$(.DOCKER_COMPOSE) up -d
-
-down:
-	$(.DOCKER_COMPOSE) down
-
-down-with-volumes:
-	$(.DOCKER_COMPOSE) down --volumes --remove-orphans
+disable-docker:
+	@rm .docker
 
 dependencies:
-	$(.DOCKER_RUN_PHP) composer install --no-interaction --no-scripts --ansi
+	$(.RUN_PHP) composer install --no-interaction --no-scripts --ansi
 
 phpunit:
-	$(.DOCKER_RUN_PHP) bin/phpunit
-
-shell:
-	$(.DOCKER_RUN_PHP) sh
+	$(.RUN_PHP) bin/phpunit
 
 validate-composer:
-	$(.DOCKER_RUN_PHP) composer validate --strict
+	$(.RUN_PHP) composer validate --strict
 
 lint: lint-container lint-yaml
 
 lint-container:
-	$(.DOCKER_RUN_PHP) bin/console lint:container
+	$(.RUN_PHP) bin/console lint:container
 
 lint-yaml:
-	$(.DOCKER_RUN_PHP) bin/console lint:yaml config --parse-tags
+	$(.RUN_PHP) bin/console lint:yaml config --parse-tags
 
 phpstan:
-	$(.DOCKER_RUN_PHP) vendor/bin/phpstan analyse --no-progress
+	$(.RUN_PHP) vendor/bin/phpstan analyse --no-progress
 
 cs:
-	$(.DOCKER_RUN_PHP) vendor/bin/php-cs-fixer fix --diff --dry-run --ansi
+	$(.RUN_PHP) vendor/bin/php-cs-fixer fix --diff --dry-run --ansi
 
 cs-fix:
-	$(.DOCKER_RUN_PHP) vendor/bin/php-cs-fixer fix --diff --ansi
+	$(.RUN_PHP) vendor/bin/php-cs-fixer fix --diff --ansi
 
 # Based on https://www.thapaliya.com/en/writings/well-documented-makefiles/
 help: ## Display this help
