@@ -1,0 +1,23 @@
+.DOCKER_COMPOSE := docker compose
+.RUN_PHP := $(.DOCKER_COMPOSE) run --rm php
+
+.PHONY: all $(MAKECMDGOALS) #see https://stackoverflow.com/questions/44492805/makefile-declare-all-targets-phony
+
+setup: build dependencies up ## Setup the project
+restart: down up ## Restart the project
+destroy: down-with-volumes ## Destroy the project
+
+build:
+	$(.DOCKER_COMPOSE) build --pull
+
+up:
+	$(.DOCKER_COMPOSE) up -d
+
+down:
+	$(.DOCKER_COMPOSE) down
+
+down-with-volumes:
+	$(.DOCKER_COMPOSE) down --volumes --remove-orphans
+
+shell:
+	$(.RUN_PHP) sh
