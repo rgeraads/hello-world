@@ -11,11 +11,11 @@ endif
 test: phpunit ## Run the test suite
 qa: phpstan cs lint ## Run the quality assurance suite
 
-enable-docker:
+enable-docker: ## Enable Docker commands
 	@touch .docker
 
-disable-docker:
-	@rm .docker
+disable-docker: ## Disable Docker commands
+	@rm -f .docker
 
 dependencies:
 	$(.RUN_PHP) composer install --no-interaction --no-scripts --ansi
