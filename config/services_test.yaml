@@ -14,3 +14,6 @@ services:
 
     App\Repository\DbalPostRepository:
     App\Repository\DbalAuthorRepository:
+
+    App\QLS\Client\QlsClient:
+        class: App\QLS\Client\FixtureQlsClient

@@ -24,5 +24,25 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
+    App\Controller\QLS\CreateShipmentLabelController:
+        tags: ['controller.service_arguments']
+        arguments:
+            $tempPath: '/app/var'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\QLS\Client\QlsClient:
+        class: App\QLS\Client\GuzzleQlsClient
+
+    App\QLS\ShipmentLabel\ShipmentLabelMerger:
+        arguments:
+            $tempPath: '/app/var'
+
+    GuzzleHttp\Client:
+        arguments:
+            $config:
+                base_uri: 'https://api.pakketdienstqls.nl'
+                auth:
+                    - '%env(string:SLQ_BASIC_AUTH_USERNAME)%'
+                    - '%env(string:SLQ_BASIC_AUTH_PASSWORD)%'

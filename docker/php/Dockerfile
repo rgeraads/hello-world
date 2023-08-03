@@ -7,6 +7,23 @@ RUN apt-get update && apt-get install --yes git zip
 
 RUN docker-php-ext-install pdo pdo_mysql
 
+RUN apt-get install -y \
+    ghostscript libmagickwand-dev --no-install-recommends \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick
+
+RUN apt-get install -y \
+        libfreetype6-dev \
+        libmcrypt-dev \
+        libjpeg-dev \
+        libpng-dev \
+        zlib1g-dev
+
+RUN docker-php-ext-configure gd \
+        --with-freetype \
+        --with-jpeg \
+    && docker-php-ext-install gd
+
 # copy the Composer PHAR from the Composer image into the PHP image
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -30,6 +47,7 @@ RUN mkdir -p /tmp/blackfire \
 
 COPY php.ini /usr/local/etc/php/php.ini
 COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY ImageMagick/policy.xml /etc/ImageMagick-6/policy.xml
 
 WORKDIR /app
 
