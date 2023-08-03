@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\QLS;
 
 use App\QLS\Client\QlsClient;
+use App\QLS\Product\Product;
 use App\QLS\ShipmentLabel\ShipmentLabelMerger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -31,6 +32,8 @@ final class ShipmentLabelFormController extends AbstractController
                 unset($products[$key]);
             }
         }
+
+        usort($products, fn(Product $a, Product $b) => $a->getId() <=> $b->getId());
 
         $choices = array_map(fn ($product) => [$product->getName() => $product->getId()], $products);
 
