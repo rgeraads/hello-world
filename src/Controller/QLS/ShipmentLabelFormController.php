@@ -33,7 +33,7 @@ final class ShipmentLabelFormController extends AbstractController
             }
         }
 
-        usort($products, fn(Product $a, Product $b) => $a->getId() <=> $b->getId());
+        usort($products, fn (Product $a, Product $b) => $a->getId() <=> $b->getId());
 
         $choices = array_map(fn ($product) => [$product->getName() => $product->getId()], $products);
 
