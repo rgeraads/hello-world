@@ -9,7 +9,8 @@ use App\QLS\Order\Order;
 final class ShipmentLabelMerger
 {
     public function __construct(
-        private PdfToJpgConverter $converter,
+        private PdfToJpgConverter $pdfToJpgConverter,
+        private JpgToPdfConverter $jpgToPdfConverter,
         private ImageEditor $editor,
         private string $tempPath
     ) {
@@ -17,12 +18,14 @@ final class ShipmentLabelMerger
 
     public function merge(string $source, Order $order): string
     {
-        $convertedPath = $this->tempPath . '/converted.jpg';
-        $mergedPath = $this->tempPath . '/merged.jpg';
+        $convertedJpg = $this->tempPath . '/converted.jpg';
+        $mergedJpg = $this->tempPath . '/merged.jpg';
+        $convertedPdf = $this->tempPath . '/converted.pdf';
 
-        $this->converter->convert($source, $convertedPath);
-        $this->editor->addOrderInformation($convertedPath, $order, $mergedPath);
+        $this->pdfToJpgConverter->convert($source, $convertedJpg);
+        $this->editor->addOrderInformation($convertedJpg, $order, $mergedJpg);
+        $this->jpgToPdfConverter->convert($mergedJpg, $convertedPdf);
 
-        return $mergedPath;
+        return $convertedPdf;
     }
 }

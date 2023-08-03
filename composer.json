@@ -5,6 +5,7 @@
     "require": {
         "php": "^8.2",
         "ext-gd": "*",
+        "ext-imagick": "*",
         "doctrine/dbal": "^3.6",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "guzzlehttp/guzzle": "^7.5",
