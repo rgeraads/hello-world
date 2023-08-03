@@ -6,6 +6,7 @@ namespace App\QLS\ShipmentLabel;
 
 use App\QLS\Order\Order;
 use App\QLS\Order\OrderLine;
+
 use function imagecolorallocate;
 use function imagecreatefromjpeg;
 use function imagedestroy;

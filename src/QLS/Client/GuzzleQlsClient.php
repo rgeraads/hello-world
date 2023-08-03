@@ -22,7 +22,7 @@ final class GuzzleQlsClient implements QlsClient
 
             $products = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR)['data'];
 
-            return array_map(fn($product) => Product::fromData($product), $products);
+            return array_map(fn ($product) => Product::fromData($product), $products);
         } catch (GuzzleException|JsonException $e) {
             throw new QlsClientException($e->getMessage());
         }

@@ -23,7 +23,7 @@ final class CreateShipmentLabelController
     #[Route('/qls/shipment/label', methods: ['GET'])]
     public function __invoke(Request $request): BinaryFileResponse
     {
-        $productId = (int)$request->query->all('data')['product'];
+        $productId = (int) $request->query->all('data')['product'];
 
         $companyId = '9e606e6b-44a4-4a4e-a309-cc70ddd3a103';
 
@@ -73,8 +73,8 @@ final class CreateShipmentLabelController
                     'name' => 'Sjaal - Rood Oranje',
                     'sku' => 25920,
                     'ean' => '3059943009097',
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->qlsClient->downloadShippingLabel($shipment['labels']['a4']['offset_0'], $this->tempPath . '/shipment-label.pdf');

@@ -181,5 +181,4 @@ final class FixtureQlsClient implements QlsClient
     {
         // TODO: Implement downloadShippingLabel() method.
     }
-
 }

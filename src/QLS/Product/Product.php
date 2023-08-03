@@ -62,13 +62,13 @@ final readonly class Product
     public static function fromData(array $data): self
     {
         return new self(
-            (int)$data['id'],
+            (int) $data['id'],
             $data['name'],
             $data['type'],
-            (bool)$data['servicepoint'],
-            $data['max_height'] ? (int)$data['max_height'] : null,
-            $data['max_length'] ? (int)$data['max_length'] : null,
-            $data['max_width'] ? (int)$data['max_width'] : null,
+            (bool) $data['servicepoint'],
+            $data['max_height'] ? (int) $data['max_height'] : null,
+            $data['max_length'] ? (int) $data['max_length'] : null,
+            $data['max_width'] ? (int) $data['max_width'] : null,
             $data['pricing'],
             $data['options'],
             $data['combinations']
