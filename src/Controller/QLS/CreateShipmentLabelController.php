@@ -9,6 +9,7 @@ use App\QLS\Order\Order;
 use App\QLS\ShipmentLabel\ShipmentLabelMerger;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 final class CreateShipmentLabelController
@@ -35,6 +36,10 @@ final class CreateShipmentLabelController
             }
 
             $shipment = $this->qlsClient->createShipment($companyId, $products[$key]);
+        }
+
+        if (!isset($shipment)) {
+            throw new NotFoundHttpException(sprintf('Could not create shipment for product id %d', $productId));
         }
 
         $order = [
