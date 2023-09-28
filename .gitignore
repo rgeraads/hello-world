@@ -19,6 +19,8 @@
 ###< friendsofphp/php-cs-fixer ###
 
 /docker-compose.override.yml
-
-/.phpstan.neon
 /.docker
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
