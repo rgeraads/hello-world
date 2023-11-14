@@ -316,56 +316,59 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "2.9.1",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "7539b3c8bd620f7df6c2c6d510204bd2ce0064e3"
+                "reference": "ca64ca70247d7b1b56a57c3b147b77253eaea2f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/7539b3c8bd620f7df6c2c6d510204bd2ce0064e3",
-                "reference": "7539b3c8bd620f7df6c2c6d510204bd2ce0064e3",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/ca64ca70247d7b1b56a57c3b147b77253eaea2f5",
+                "reference": "ca64ca70247d7b1b56a57c3b147b77253eaea2f5",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.11 || ^2.0",
-                "doctrine/dbal": "^3.6.0",
+                "doctrine/dbal": "^3.7.0 || ^4.0",
                 "doctrine/persistence": "^2.2 || ^3",
                 "doctrine/sql-formatter": "^1.0.1",
                 "php": "^7.4 || ^8.0",
-                "symfony/cache": "^5.4 || ^6.0",
-                "symfony/config": "^5.4 || ^6.0",
-                "symfony/console": "^5.4 || ^6.0",
-                "symfony/dependency-injection": "^5.4 || ^6.0",
+                "symfony/cache": "^5.4 || ^6.0 || ^7.0",
+                "symfony/config": "^5.4 || ^6.0 || ^7.0",
+                "symfony/console": "^5.4 || ^6.0 || ^7.0",
+                "symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
                 "symfony/deprecation-contracts": "^2.1 || ^3",
-                "symfony/doctrine-bridge": "^5.4.19 || ^6.0.7",
-                "symfony/framework-bundle": "^5.4 || ^6.0",
+                "symfony/doctrine-bridge": "^5.4.19 || ^6.0.7 || ^7.0",
+                "symfony/framework-bundle": "^5.4 || ^6.0 || ^7.0",
+                "symfony/polyfill-php80": "^1.15",
                 "symfony/service-contracts": "^1.1.1 || ^2.0 || ^3"
             },
             "conflict": {
                 "doctrine/annotations": ">=3.0",
-                "doctrine/orm": "<2.11 || >=3.0",
+                "doctrine/orm": "<2.14 || >=4.0",
                 "twig/twig": "<1.34 || >=2.0 <2.4"
             },
             "require-dev": {
                 "doctrine/annotations": "^1 || ^2",
-                "doctrine/coding-standard": "^9.0",
+                "doctrine/coding-standard": "^12",
                 "doctrine/deprecations": "^1.0",
-                "doctrine/orm": "^2.11 || ^3.0",
+                "doctrine/orm": "^2.14 || ^3.0",
                 "friendsofphp/proxy-manager-lts": "^1.0",
                 "phpunit/phpunit": "^9.5.26 || ^10.0",
                 "psalm/plugin-phpunit": "^0.18.4",
                 "psalm/plugin-symfony": "^4",
                 "psr/log": "^1.1.4 || ^2.0 || ^3.0",
-                "symfony/phpunit-bridge": "^6.1",
-                "symfony/property-info": "^5.4 || ^6.0",
-                "symfony/proxy-manager-bridge": "^5.4 || ^6.0",
-                "symfony/security-bundle": "^5.4 || ^6.0",
-                "symfony/twig-bridge": "^5.4 || ^6.0",
-                "symfony/validator": "^5.4 || ^6.0",
-                "symfony/web-profiler-bundle": "^5.4 || ^6.0",
-                "symfony/yaml": "^5.4 || ^6.0",
+                "symfony/phpunit-bridge": "^6.1 || ^7.0",
+                "symfony/property-info": "^5.4 || ^6.0 || ^7.0",
+                "symfony/proxy-manager-bridge": "^5.4 || ^6.0 || ^7.0",
+                "symfony/security-bundle": "^5.4 || ^6.0 || ^7.0",
+                "symfony/string": "^5.4 || ^6.0 || ^7.0",
+                "symfony/twig-bridge": "^5.4 || ^6.0 || ^7.0",
+                "symfony/validator": "^5.4 || ^6.0 || ^7.0",
+                "symfony/var-exporter": "^5.4 || ^6.2 || ^7.0",
+                "symfony/web-profiler-bundle": "^5.4 || ^6.0 || ^7.0",
+                "symfony/yaml": "^5.4 || ^6.0 || ^7.0",
                 "twig/twig": "^1.34 || ^2.12 || ^3.0",
                 "vimeo/psalm": "^4.30"
             },
@@ -412,7 +415,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.9.1"
+                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.11.0"
             },
             "funding": [
                 {
@@ -428,38 +431,44 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-14T05:39:34+00:00"
+            "time": "2023-11-12T18:59:02+00:00"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
-            "version": "3.2.4",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-                "reference": "94e6b0fe1a50901d52f59dbb9b4b0737718b2c1e"
+                "reference": "1dd42906a5fb9c5960723e2ebb45c68006493835"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/94e6b0fe1a50901d52f59dbb9b4b0737718b2c1e",
-                "reference": "94e6b0fe1a50901d52f59dbb9b4b0737718b2c1e",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/1dd42906a5fb9c5960723e2ebb45c68006493835",
+                "reference": "1dd42906a5fb9c5960723e2ebb45c68006493835",
                 "shasum": ""
             },
             "require": {
-                "doctrine/doctrine-bundle": "~1.0|~2.0",
+                "doctrine/doctrine-bundle": "^2.4",
                 "doctrine/migrations": "^3.2",
                 "php": "^7.2|^8.0",
-                "symfony/framework-bundle": "~3.4|~4.0|~5.0|~6.0"
+                "symfony/deprecation-contracts": "^2.1 || ^3",
+                "symfony/framework-bundle": "^5.4 || ^6.0 || ^7.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^9",
-                "doctrine/orm": "^2.6",
-                "doctrine/persistence": "^1.3||^2.0",
+                "doctrine/coding-standard": "^12",
+                "doctrine/orm": "^2.6 || ^3",
+                "doctrine/persistence": "^2.0 || ^3 ",
                 "phpstan/phpstan": "^1.4",
                 "phpstan/phpstan-deprecation-rules": "^1",
                 "phpstan/phpstan-phpunit": "^1",
                 "phpstan/phpstan-strict-rules": "^1.1",
+                "phpstan/phpstan-symfony": "^1.3",
                 "phpunit/phpunit": "^8.5|^9.5",
-                "vimeo/psalm": "^4.22"
+                "psalm/plugin-phpunit": "^0.18.4",
+                "psalm/plugin-symfony": "^3 || ^5",
+                "symfony/phpunit-bridge": "^6.3 || ^7",
+                "symfony/var-exporter": "^5.4 || ^6 || ^7",
+                "vimeo/psalm": "^4.30 || ^5.15"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -497,7 +506,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineMigrationsBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineMigrationsBundle/tree/3.2.4"
+                "source": "https://github.com/doctrine/DoctrineMigrationsBundle/tree/3.3.0"
             },
             "funding": [
                 {
@@ -513,7 +522,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-02T08:19:26+00:00"
+            "time": "2023-11-13T19:44:41+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -608,47 +617,47 @@
         },
         {
             "name": "doctrine/migrations",
-            "version": "3.6.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "e542ad8bcd606d7a18d0875babb8a6d963c9c059"
+                "reference": "282661f27129232e94e5e4dd5cb89a95c796bec2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/e542ad8bcd606d7a18d0875babb8a6d963c9c059",
-                "reference": "e542ad8bcd606d7a18d0875babb8a6d963c9c059",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/282661f27129232e94e5e4dd5cb89a95c796bec2",
+                "reference": "282661f27129232e94e5e4dd5cb89a95c796bec2",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2",
-                "doctrine/dbal": "^3.5.1",
+                "doctrine/dbal": "^3.5.1 || ^4",
                 "doctrine/deprecations": "^0.5.3 || ^1",
                 "doctrine/event-manager": "^1.2 || ^2.0",
                 "php": "^8.1",
                 "psr/log": "^1.1.3 || ^2 || ^3",
-                "symfony/console": "^4.4.16 || ^5.4 || ^6.0",
-                "symfony/stopwatch": "^4.4 || ^5.4 || ^6.0",
-                "symfony/var-exporter": "^6.2"
+                "symfony/console": "^5.4 || ^6.0 || ^7.0",
+                "symfony/stopwatch": "^5.4 || ^6.0 || ^7.0",
+                "symfony/var-exporter": "^6.2 || ^7.0"
             },
             "conflict": {
-                "doctrine/orm": "<2.12"
+                "doctrine/orm": "<2.12 || >=4"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^9",
-                "doctrine/orm": "^2.13",
+                "doctrine/coding-standard": "^12",
+                "doctrine/orm": "^2.13 || ^3",
                 "doctrine/persistence": "^2 || ^3",
                 "doctrine/sql-formatter": "^1.0",
                 "ext-pdo_sqlite": "*",
-                "phpstan/phpstan": "^1.5",
-                "phpstan/phpstan-deprecation-rules": "^1",
-                "phpstan/phpstan-phpunit": "^1.1",
-                "phpstan/phpstan-strict-rules": "^1.1",
-                "phpstan/phpstan-symfony": "^1.1",
-                "phpunit/phpunit": "^9.5.24",
-                "symfony/cache": "^4.4 || ^5.4 || ^6.0",
-                "symfony/process": "^4.4 || ^5.4 || ^6.0",
-                "symfony/yaml": "^4.4 || ^5.4 || ^6.0"
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.3",
+                "phpstan/phpstan-strict-rules": "^1.4",
+                "phpstan/phpstan-symfony": "^1.3",
+                "phpunit/phpunit": "^10.3",
+                "symfony/cache": "^5.4 || ^6.0 || ^7.0",
+                "symfony/process": "^5.4 || ^6.0 || ^7.0",
+                "symfony/yaml": "^5.4 || ^6.0 || ^7.0"
             },
             "suggest": {
                 "doctrine/sql-formatter": "Allows to generate formatted SQL with the diff command.",
@@ -690,7 +699,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/migrations/issues",
-                "source": "https://github.com/doctrine/migrations/tree/3.6.0"
+                "source": "https://github.com/doctrine/migrations/tree/3.7.0"
             },
             "funding": [
                 {
@@ -706,7 +715,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-15T18:49:46+00:00"
+            "time": "2023-11-13T12:31:07+00:00"
         },
         {
             "name": "doctrine/persistence",
@@ -2257,16 +2266,16 @@
         },
         {
             "name": "symfony/doctrine-bridge",
-            "version": "v6.3.0",
+            "version": "v6.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/doctrine-bridge.git",
-                "reference": "501d0c8dc627d2f6ad6185920d4db74477a98e75"
+                "reference": "8842d289d41320a0f725e996b4e58d84af398a9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/doctrine-bridge/zipball/501d0c8dc627d2f6ad6185920d4db74477a98e75",
-                "reference": "501d0c8dc627d2f6ad6185920d4db74477a98e75",
+                "url": "https://api.github.com/repos/symfony/doctrine-bridge/zipball/8842d289d41320a0f725e996b4e58d84af398a9e",
+                "reference": "8842d289d41320a0f725e996b4e58d84af398a9e",
                 "shasum": ""
             },
             "require": {
@@ -2293,14 +2302,14 @@
                 "symfony/property-info": "<5.4",
                 "symfony/security-bundle": "<5.4",
                 "symfony/security-core": "<6.0",
-                "symfony/validator": "<5.4"
+                "symfony/validator": "<5.4.25|>=6,<6.2.12|>=6.3,<6.3.1"
             },
             "require-dev": {
                 "doctrine/annotations": "^1.13.1|^2",
                 "doctrine/collections": "^1.0|^2.0",
                 "doctrine/data-fixtures": "^1.1",
-                "doctrine/dbal": "^2.13.1|^3.0",
-                "doctrine/orm": "^2.12",
+                "doctrine/dbal": "^2.13.1|^3|^4",
+                "doctrine/orm": "^2.12|^3",
                 "psr/log": "^1|^2|^3",
                 "symfony/cache": "^5.4|^6.0",
                 "symfony/config": "^5.4|^6.0",
@@ -2318,7 +2327,7 @@
                 "symfony/stopwatch": "^5.4|^6.0",
                 "symfony/translation": "^5.4|^6.0",
                 "symfony/uid": "^5.4|^6.0",
-                "symfony/validator": "^5.4|^6.0",
+                "symfony/validator": "^5.4.25|~6.2.12|^6.3.1",
                 "symfony/var-dumper": "^5.4|^6.0"
             },
             "type": "symfony-bridge",
@@ -2347,7 +2356,7 @@
             "description": "Provides integration for Doctrine with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/doctrine-bridge/tree/v6.3.0"
+                "source": "https://github.com/symfony/doctrine-bridge/tree/v6.3.8"
             },
             "funding": [
                 {
@@ -2363,7 +2372,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-25T13:09:35+00:00"
+            "time": "2023-10-31T08:07:48+00:00"
         },
         {
             "name": "symfony/dotenv",
