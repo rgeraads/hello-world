@@ -36,6 +36,9 @@ jobs:
       - name: The PHP Security Checker
         uses: symfonycorp/security-checker-action@v5
 
+      - name: SLEEP!
+        run: sleep 20
+
       - name: Run tests
         run: make test
 
