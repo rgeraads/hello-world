@@ -14,6 +14,9 @@ services:
       COMPOSER_AUTH:
       COMPOSER_CACHE_DIR: /tmp/composer_cache
       COMPOSER_MEMORY_LIMIT: -1
+    depends_on:
+      mysql:
+        condition: service_healthy
 
   mysql:
     build: docker/mysql
@@ -24,12 +27,10 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=0000
     command: --default-authentication-plugin=mysql_native_password
-    depends_on:
-      - php
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 1s
+      retries: 5
 
   nginx:
     build: docker/nginx
