@@ -7,6 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Run CI suite
+    env:
+      HOST_UID: 1001
+      HOST_GID: 121
 
     steps:
       - uses: actions/checkout@v4
