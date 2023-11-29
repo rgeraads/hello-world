@@ -11,15 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Enable docker
-        run: make enable-docker
-
-      - name: Build the stack
-        run: make setup
-
-      - name: The PHP Security Checker
-        uses: symfonycorp/security-checker-action@v5
-
       - name: Get Composer Cache Directory
         id: composer-cache
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
@@ -32,8 +23,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
-      - name: Install dependencies
-        run: make dependencies
+      - name: Enable docker
+        run: make enable-docker
+
+      - name: Build the stack
+        run: make setup
+
+      - name: The PHP Security Checker
+        uses: symfonycorp/security-checker-action@v5
 
       - name: Run cs-fixer
         run: make qa
