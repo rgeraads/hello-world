@@ -9,7 +9,7 @@ ifneq ("$(wildcard .docker)","")
 endif
 
 test: phpunit ## Run the test suite
-qa: phpstan cs lint ## Run the quality assurance suite
+qa: validate-composer phpstan cs lint ## Run the quality assurance suite
 
 enable-docker: ## Enable Docker commands
 	@touch .docker
