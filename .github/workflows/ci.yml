@@ -5,31 +5,14 @@ on: [ push ]
 
 jobs:
   build:
-    runs-on: [ ubuntu-latest ]
+    runs-on: ubuntu-latest
     name: Run CI suite
     env:
-      DATABASE_URL: 'mysql://root:0000@127.0.0.1:3306/app'
-
-    services:
-      mysql:
-        image: mysql:8.0
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-        env:
-          MYSQL_ROOT_PASSWORD: '0000'
+      HOST_UID: 1001
+      HOST_GID: 121
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: mysql
-
-      - name: The PHP Security Checker
-        uses: symfonycorp/security-checker-action@v5
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -43,14 +26,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
-      - name: Install dependencies
-        run: composer install --no-progress  --ansi
+      - name: Enable docker
+        run: make enable-docker
 
-      - name: Run cs-fixer
-        run: vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation  --ansi
+      - name: Build the stack
+        run: make setup
+
+      - name: The PHP Security Checker
+        uses: symfonycorp/security-checker-action@v5
 
       - name: Run tests
-        run: bin/phpunit
+        run: make test
 
-      - name: Run phpstan
-        run: vendor/bin/phpstan analyse --no-progress --ansi
+      - name: Run cs-fixer
+        run: make qa
