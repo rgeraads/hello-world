@@ -5,10 +5,17 @@ updates:
     schedule:
       interval: "daily"
       time: "06:00"
+
   - package-ecosystem: "docker"
-    directory: "/docker/*/"
+    directory: "/docker/php/"
     schedule:
         interval: "weekly"
+
+  - package-ecosystem: "docker"
+    directory: "/docker/mysql/"
+    schedule:
+        interval: "weekly"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
