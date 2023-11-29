@@ -26,9 +26,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
-      - name: Create vendor dir
-        run: mkdir vendor
-
       - name: Enable docker
         run: make enable-docker
 
@@ -38,8 +35,8 @@ jobs:
       - name: The PHP Security Checker
         uses: symfonycorp/security-checker-action@v5
 
-      - name: Run cs-fixer
-        run: make qa
-
       - name: Run tests
         run: make test
+
+      - name: Run cs-fixer
+        run: make qa
