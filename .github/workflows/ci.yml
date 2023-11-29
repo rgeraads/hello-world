@@ -10,7 +10,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        run: touch .docker
+
+      - name: Enable docker
+        run: make enable-docker
 
       - name: Build the stack
         run: make setup
