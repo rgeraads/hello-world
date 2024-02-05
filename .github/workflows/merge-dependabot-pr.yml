@@ -12,7 +12,7 @@ jobs:
     if: github.actor == 'dependabot[bot]'
     steps:
       - name: approve
-        uses: hmarr/auto-approve-action@v3
+        uses: hmarr/auto-approve-action@v4
 
       - name: merge
         uses: peter-evans/enable-pull-request-automerge@v3
