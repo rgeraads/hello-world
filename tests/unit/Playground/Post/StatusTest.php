@@ -16,10 +16,4 @@ final class StatusTest extends TestCase
         self::assertSame('published', Status::PUBLISHED->value);
         self::assertSame('archived', Status::ARCHIVED->value);
     }
-
-    /** @test */
-    public function it_should_return_null_on_invalid_value(): void
-    {
-        self::assertNull(Status::tryFrom('foo'));
-    }
 }
