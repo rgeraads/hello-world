@@ -22,7 +22,6 @@ services:
       - ./docker/mysql/init:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=0000
-    command: ["mysqld", "--mysql-native-password=ON"]
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 1s
