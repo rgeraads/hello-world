@@ -11,6 +11,8 @@ services:
         public: true
 
     App\Repository\PostRepository: '@App\Repository\DbalPostRepository'
+    App\Repository\UserRepository: '@App\Repository\MongoUserRepository'
 
-    App\Repository\DbalPostRepository:
     App\Repository\DbalAuthorRepository:
+    App\Repository\DbalPostRepository:
+    App\Repository\MongoUserRepository:

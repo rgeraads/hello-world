@@ -13,6 +13,8 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+      mongodb:
+        condition: service_healthy
 
   mysql:
     build: docker/mysql
@@ -27,14 +29,25 @@ services:
       interval: 1s
       retries: 5
 
+  mongodb:
+    image: mongo:latest
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+    volumes:
+      - mongodb_data:/data/db:rw
+    restart: always
+    environment:
+      MONGODB_INITDB_DATABASE: app
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: example
+
   nginx:
     build: docker/nginx
     volumes:
       - ./:/app #required if files other than index.php need to be available
-    ports:
-      - "8000:80"
     depends_on:
       - php
 
 volumes:
   mysql:
+  mongodb_data:

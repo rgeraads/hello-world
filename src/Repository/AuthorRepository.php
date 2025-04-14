@@ -10,5 +10,10 @@ interface AuthorRepository
 {
     public function findById(string $id): ?Author;
 
+    /**
+     * @return Author[]
+     */
+    public function findAll(): array;
+
     public function save(Author $author): void;
 }

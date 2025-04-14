@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Functional\Repository;
 
 use App\Playground\Author\Author;
@@ -9,7 +11,7 @@ use App\Playground\Author\LastName;
 use App\Repository\DbalAuthorRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-final class AuthorRepositoryTest extends KernelTestCase
+final class DbalAuthorRepositoryTest extends KernelTestCase
 {
     /** @test */
     public function it_should_save_an_author(): void

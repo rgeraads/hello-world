@@ -4,21 +4,22 @@ declare(strict_types=1);
 
 namespace App\Controller\Post;
 
+use App\Playground\Post\Post;
 use App\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class ListPostsController
+final readonly class ListPostsController
 {
-    public function __construct(private PostRepository $postRepository)
+    public function __construct(private PostRepository $repository)
     {
     }
 
     #[Route('/posts', methods: ['GET'])]
     public function __invoke(): Response
     {
-        $posts = $this->postRepository->findAll();
+        $posts = $this->repository->findAll();
 
-        return new Response(json_encode(array_map(fn ($row) => $row->toArray(), $posts), JSON_THROW_ON_ERROR), 200);
+        return new Response(json_encode(array_map(fn (Post $post) => $post->toArray(), $posts), JSON_THROW_ON_ERROR), 200);
     }
 }
