@@ -8,7 +8,7 @@ restart: down up ## Restart the project
 destroy: down-with-volumes ## Destroy the project
 
 build:
-	$(.DOCKER_COMPOSE) build --pull
+	COMPOSE_BAKE=true $(.DOCKER_COMPOSE) build --pull
 
 up:
 	$(.DOCKER_COMPOSE) up -d
