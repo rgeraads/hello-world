@@ -8,11 +8,12 @@ use App\Playground\Author\Author;
 use App\Playground\Author\AuthorId;
 use App\Playground\Author\FirstName;
 use App\Playground\Author\LastName;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class AuthorTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_expose_the_id(): void
     {
         $authorId = AuthorId::generate();
@@ -22,7 +23,7 @@ final class AuthorTest extends TestCase
         self::assertSame($authorId->toString(), $author->getAuthorId()->toString());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_expose_the_first_name(): void
     {
         $author = new Author(AuthorId::generate(), new FirstName('John'), new LastName('Doe'));
@@ -30,7 +31,7 @@ final class AuthorTest extends TestCase
         self::assertSame('John', $author->getFirstName()->toString());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_expose_the_last_name(): void
     {
         $author = new Author(AuthorId::generate(), new FirstName('John'), new LastName('Doe'));
@@ -38,7 +39,7 @@ final class AuthorTest extends TestCase
         self::assertSame('Doe', $author->getLastName()->toString());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_expose_the_full_name(): void
     {
         $author = new Author(AuthorId::generate(), new FirstName('John'), new LastName('Doe'));
