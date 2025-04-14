@@ -6,11 +6,12 @@ namespace App\Tests\Functional\Controller\Post;
 
 use App\Playground\Author\AuthorId;
 use App\Repository\PostRepository;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class AddPostControllerTest extends WebTestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_add_a_post(): void
     {
         $client = self::createClient();

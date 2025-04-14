@@ -10,11 +10,12 @@ use App\Playground\User\User;
 use App\Playground\User\UserId;
 use App\Repository\MongoUserRepository;
 use App\Repository\UserRepository;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 final class MongoUserRepositoryTest extends KernelTestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_save_a_user(): void
     {
         self::bootKernel();

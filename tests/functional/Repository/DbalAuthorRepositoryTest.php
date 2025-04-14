@@ -9,11 +9,12 @@ use App\Playground\Author\AuthorId;
 use App\Playground\Author\FirstName;
 use App\Playground\Author\LastName;
 use App\Repository\DbalAuthorRepository;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 final class DbalAuthorRepositoryTest extends KernelTestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_save_an_author(): void
     {
         self::bootKernel();

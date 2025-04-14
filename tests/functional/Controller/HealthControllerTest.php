@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller;
 
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class HealthControllerTest extends WebTestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_be_healthy(): void
     {
         $client = self::createClient();

@@ -12,11 +12,12 @@ use App\Playground\Post\Status;
 use App\Playground\Post\Title;
 use App\Repository\PostRepository;
 use DateTime;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class ListPostsControllerTest extends WebTestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_list_posts(): void
     {
         $client = self::createClient();

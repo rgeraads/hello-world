@@ -12,11 +12,12 @@ use App\Playground\Post\Status;
 use App\Playground\Post\Title;
 use App\Repository\DbalPostRepository;
 use DateTime;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 final class DbalPostRepositoryTest extends KernelTestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_save_a_post(): void
     {
         self::bootKernel();

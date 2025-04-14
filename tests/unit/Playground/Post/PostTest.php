@@ -11,11 +11,12 @@ use App\Playground\Post\PostId;
 use App\Playground\Post\Status;
 use App\Playground\Post\Title;
 use DateTime;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class PostTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_create_a_post(): void
     {
         $postId = PostId::generate();
