@@ -7,6 +7,9 @@ RUN apt-get update && apt-get install --yes git zip
 
 RUN docker-php-ext-install pdo pdo_mysql
 
+RUN pecl install mongodb && docker-php-ext-enable mongodb
+RUN echo "extension=mongodb.so" >> /usr/local/etc/php/php.ini
+
 # copy the Composer PHAR from the Composer image into the PHP image
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 

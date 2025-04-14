@@ -4,8 +4,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "ext-mongodb": "*",
         "doctrine/dbal": "^4.0",
         "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/mongodb-odm-bundle": "^5.3",
         "guzzlehttp/guzzle": "^7.5",
         "ramsey/uuid": "^4.7",
         "symfony/console": "^7.0",

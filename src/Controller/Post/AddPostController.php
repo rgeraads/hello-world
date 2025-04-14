@@ -16,9 +16,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class AddPostController
+final readonly class AddPostController
 {
-    public function __construct(private PostRepository $postRepository)
+    public function __construct(private PostRepository $repository)
     {
     }
 
@@ -34,7 +34,7 @@ final class AddPostController
             new DateTime(),
         );
 
-        $this->postRepository->save($post);
+        $this->repository->save($post);
 
         return new Response('', 201);
     }

@@ -24,6 +24,13 @@ final class DbalAuthorRepository implements AuthorRepository
         return Author::fromArray($result);
     }
 
+    public function findAll(): array
+    {
+        $result = $this->connection->fetchAllAssociative('SELECT * FROM author');
+
+        return array_map(fn ($row) => Author::fromArray($row), $result);
+    }
+
     public function save(Author $author): void
     {
         $this->connection->insert('author', $author->toArray());
