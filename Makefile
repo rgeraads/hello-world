@@ -35,7 +35,7 @@ lint-yaml:
 	$(.RUN_PHP) bin/console lint:yaml config --parse-tags
 
 phpstan:
-	$(.RUN_PHP) vendor/bin/phpstan analyse --no-progress
+	$(.RUN_PHP) vendor/bin/phpstan analyse --no-progress --memory-limit=512M
 
 cs:
 	$(.RUN_PHP) vendor/bin/php-cs-fixer fix --diff --dry-run --ansi
