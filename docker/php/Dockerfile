@@ -18,6 +18,8 @@ RUN composer --version && php -v
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
+RUN mkdir -m 777 -p /var/tmp/opcache
+
 COPY php.ini /usr/local/etc/php/php.ini
 COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 

@@ -20,4 +20,4 @@ down-with-volumes:
 	$(.DOCKER_COMPOSE) down --volumes --remove-orphans
 
 shell:
-	$(.RUN_PHP) sh
+	$(.RUN_PHP) bash
