@@ -1,7 +1,7 @@
 # see https://medium.com/@othillo/adding-composer-to-php-docker-images-using-multi-stage-builds-2a10967ae6c1
 
 # use the official PHP image as base image
-FROM php:8.4-fpm
+FROM php:8.5-fpm
 
 RUN apt-get update && apt-get install --yes git zip
 
@@ -17,6 +17,8 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN composer --version && php -v
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
+
+RUN mkdir -m 777 -p /var/tmp/opcache
 
 COPY php.ini /usr/local/etc/php/php.ini
 COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
