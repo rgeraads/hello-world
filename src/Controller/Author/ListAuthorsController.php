@@ -7,7 +7,7 @@ namespace App\Controller\Author;
 use App\Playground\Author\Author;
 use App\Repository\AuthorRepository;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 final readonly class ListAuthorsController
 {

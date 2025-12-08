@@ -11,7 +11,7 @@ use App\Playground\Author\LastName;
 use App\Repository\AuthorRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 final readonly class AddAuthorController
 {
@@ -24,8 +24,8 @@ final readonly class AddAuthorController
     {
         $author = new Author(
             AuthorId::generate(),
-            new FirstName($request->get('firstName')),
-            new LastName($request->get('lastName')),
+            new FirstName($request->getPayload()->get('firstName')),
+            new LastName($request->getPayload()->get('lastName')),
         );
 
         $this->repository->save($author);
