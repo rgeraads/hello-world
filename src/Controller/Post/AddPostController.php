@@ -14,7 +14,7 @@ use App\Repository\PostRepository;
 use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 final readonly class AddPostController
 {
@@ -27,9 +27,9 @@ final readonly class AddPostController
     {
         $post = new Post(
             PostId::generate(),
-            new Title($request->get('title')),
-            AuthorId::fromString($request->get('author_id')),
-            new Body($request->get('body')),
+            new Title($request->getPayload()->get('title')),
+            AuthorId::fromString($request->getPayload()->get('author_id')),
+            new Body($request->getPayload()->get('body')),
             Status::PUBLISHED,
             new DateTime(),
         );

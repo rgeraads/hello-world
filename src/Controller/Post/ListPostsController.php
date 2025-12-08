@@ -7,7 +7,7 @@ namespace App\Controller\Post;
 use App\Playground\Post\Post;
 use App\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 final readonly class ListPostsController
 {
