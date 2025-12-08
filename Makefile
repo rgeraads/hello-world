@@ -34,6 +34,10 @@ lint-container:
 lint-yaml:
 	$(.RUN_PHP) bin/console lint:yaml config --parse-tags --ansi
 
+migrate:
+	$(.RUN_PHP) bin/console doctrine:database:create --if-not-exists
+	$(.RUN_PHP) bin/console doctrine:migrations:migrate --no-interaction
+
 phpstan:
 	$(.RUN_PHP) vendor/bin/phpstan analyse --no-progress --ansi --memory-limit=512M
 
