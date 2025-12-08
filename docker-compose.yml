@@ -44,7 +44,7 @@ services:
   nginx:
     build: docker/nginx
     ports:
-      - "9000:9000"
+      - "9000:80"
     volumes:
       - ./:/app #required if files other than index.php need to be available
     depends_on:
