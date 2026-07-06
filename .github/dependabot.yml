@@ -5,6 +5,10 @@ updates:
     schedule:
       interval: "daily"
       time: "06:00"
+    groups:
+      symfony:
+        patterns:
+          - "symfony/*"
 
   - package-ecosystem: "docker"
     directory: "/docker/php/"
