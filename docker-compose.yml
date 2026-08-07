@@ -27,7 +27,8 @@ services:
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 1s
-      retries: 5
+      timeout: 2s
+      retries: 10
 
   mongodb:
     image: mongo:latest
