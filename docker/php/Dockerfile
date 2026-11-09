@@ -1,21 +1,19 @@
-# see https://medium.com/@othillo/adding-composer-to-php-docker-images-using-multi-stage-builds-2a10967ae6c1
-
-# use the official PHP image as base image
 FROM php:8.5-fpm
 
-RUN apt-get update && apt-get install --yes git zip
-
-RUN docker-php-ext-install pdo pdo_mysql
-
-RUN pecl install mongodb && docker-php-ext-enable mongodb
-RUN echo "extension=mongodb.so" >> /usr/local/etc/php/php.ini
-
-# copy the Composer PHAR from the Composer image into the PHP image
+# Install Composer
+# see https://medium.com/@othillo/adding-composer-to-php-docker-images-using-multi-stage-builds-2a10967ae6c1
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# show that both Composer and PHP run as expected
-RUN composer --version && php -v
+# Install PHP package installer
+COPY --from=ghcr.io/mlocati/php-extension-installer:2.12 /usr/bin/install-php-extensions /usr/local/bin/
 
+# Main libs
+RUN apt-get update && apt-get install --yes git zip
+
+# PHP Extensions
+RUN install-php-extensions pdo pdo_mysql mongodb
+
+# Env vars
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN mkdir -m 777 -p /var/tmp/opcache
